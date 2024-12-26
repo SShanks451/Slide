@@ -57,7 +57,7 @@ model Automation {
   dms       Dms[]
   User      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String?   @db.Uuid
-  Keyword   Keyword[]
+  keywords  Keyword[]
 }
 
 model Dms {

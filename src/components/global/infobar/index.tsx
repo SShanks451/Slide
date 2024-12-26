@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { PAGE_BREAD_CRUMBS } from "@/constants/pagex";
+import { PAGE_BREAD_CRUMBS } from "@/constants/pages";
 import { usePaths } from "@/hooks/user-nav";
 import Sheet from "../sheet";
 import Items from "../sidebar/items";
@@ -11,12 +11,16 @@ import { SubscriptionPlan } from "../subscription-plan";
 import UpgradeCard from "../sidebar/upgrade";
 import { Menu } from "lucide-react";
 import { LogoSmall } from "@/svgs/logo-small";
+import CreateAutomation from "../create-automation";
+import Search from "./search";
+import Notifications from "./notifications";
+import MainBreadCrumb from "../bread-crumbs/main-bread-crumb";
 
 type Props = {
   slug: string;
 };
 
-const Navbar = ({ slug }: Props) => {
+const InfoBar = ({ slug }: Props) => {
   const { page } = usePaths();
   const currentPage = PAGE_BREAD_CRUMBS.includes(page) || page === slug;
 
@@ -57,10 +61,14 @@ const Navbar = ({ slug }: Props) => {
               </div>
             </Sheet>
           </span>
+          <Search />
+          <CreateAutomation />
+          <Notifications />
         </div>
+        <MainBreadCrumb page={page === slug ? "Home" : page} slug={slug} />
       </div>
     )
   );
 };
 
-export default Navbar;
+export default InfoBar;
